@@ -514,6 +514,13 @@ bool MaterialTable::LoginMaterialTable(uint8_t* pMem)
 					Ice::Render::FragmentProgram* pFragProg = pTable->m_paShaderSrc[iShader].m_pFragmentProgram;
 				}
 				*/
+				uint32_t numMaterials = swapU32(&pTable->m_numMaterials);
+				for (uint32_t iMaterial = 0; iMaterial < numMaterials; iMaterial++)
+				{
+					Material* pMat = pTable->m_paMaterial[iMaterial];
+					Pass* pPass = pMat->m_apPass[0];
+					printf("Material: %s\n", pMat->m_name);
+				}
 			}
 			return true;
 		}

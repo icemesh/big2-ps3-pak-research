@@ -7,5 +7,5 @@
 
 struct DebugInfo1
 {
-	const char** m_pName;
+	const char* m_pName;
 };

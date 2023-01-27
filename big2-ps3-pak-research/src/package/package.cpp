@@ -31,6 +31,7 @@ Package::Package(const char* pakName)
 	{
 		fseek(fh, 0x0, SEEK_END);
 		size_t fsize = ftell(fh);
+		m_fileSize = fsize;
 		fseek(fh, 0x0, SEEK_SET);
 		void* pFile = malloc(fsize);
 		if (pFile)
@@ -43,7 +44,8 @@ Package::Package(const char* pakName)
 		}
 		else
 		{
-			MsgErr("Failed to allocate file");
+			MsgErr("Failed to allocate file\n");
+			fclose(fh);
 		}
 	}
 	else
@@ -94,18 +96,19 @@ int Package::PackageLogin()
 #endif
 								pCurrentPage++;
 							}
-							m_textureBaseOffset = m_hdr.m_hdrSize + m_hdr.m_pageCt << 19; //m_hdr.m_pageCt*LoadingHeap::s_PageSize
+							//m_textureBaseOffset = m_hdr.m_hdrSize + m_hdr.m_pageCt << 19; //m_hdr.m_pageCt*LoadingHeap::s_PageSize
+							m_textureBaseOffset = m_fileSize - pHdr->m_dataSize;
 							m_status = PackageStatus::kPackageStatusLoadingPages;
 						}
 						else
 						{
-							MsgErr("Level [%s] contains too many pages!", m_realFileName);
+							MsgErr("Level [%s] contains too many pages!\n", m_realFileName);
 							return 0;
 						}
 					}
 					else
 					{
-						MsgErr("Level [%s] is an older version, found 0x%08x instead of 0x%08x!", m_realFileName, magic, 0xA79);
+						MsgErr("Level [%s] is an older version, found 0x%08X instead of 0x%08X!\n", m_realFileName, magic, 0xA79);
 						return 0;
 					}
 					break;
