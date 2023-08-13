@@ -16,6 +16,7 @@
 #include "../pak-entries/debug-info.h"
 #include "../pak-entries/vis-info.h"
 #include "../pak-entries/spawner-group.h"
+#include "../pak-entries/region-tree.h"
 
 uintptr_t g_packageOffset;
 
@@ -389,6 +390,13 @@ bool Login(ResItem * pResItem, ResPage * pResPage, Package * pPackage)
 			break;
 		}
 		*/
+
+		case SID("REGION_TREE"):
+		{
+			printf("\x1B[0;32mFound: %s -> 0x%08X\x1B[m\n", reinterpret_cast<const char*>(pResItem->m_itemTypeOffset), typeId);
+			reinterpret_cast<RegionTree*>(reinterpret_cast<uint8_t*>(pResItem) + 0x20)->Login();
+			break;
+		}
 
 		case SID("SPAWNER_GROUP"):
 		{

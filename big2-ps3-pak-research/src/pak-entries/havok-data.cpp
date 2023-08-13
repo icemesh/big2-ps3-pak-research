@@ -7,8 +7,8 @@
 
 void Havok::HavokLoginLevel(uint8_t* pData)
 {
-	CollisionDataHavokBg* pCollData = reinterpret_cast<CollisionDataHavokBg*>(pData);
-	if (pCollData)
+	HavokBackgroundData* pBackground = reinterpret_cast<HavokBackgroundData*>(pData);
+	if (pBackground)
 	{
 
 	}

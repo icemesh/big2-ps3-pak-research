@@ -22,7 +22,7 @@ static inline uint32_t swapU32(void const* pMem)
 #endif
 }
 
-static inline uint32_t swapU16(void const* pMem)
+static inline uint16_t swapU16(void const* pMem)
 {
 #ifdef WIN32
 	//using immintrinsics

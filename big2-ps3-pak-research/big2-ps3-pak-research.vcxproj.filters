@@ -48,6 +48,9 @@
     <ClInclude Include="src\utils\sidbase\sidbase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\pak-entries\region-tree.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\package\package.cpp">
@@ -72,6 +75,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\utils\sidbase\sidbase.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\pak-entries\region-tree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
